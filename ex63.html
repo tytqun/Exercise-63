@@ -186,7 +186,7 @@
     </table>
 
     <script>
-        // Populate day, month, year dropdowns
+        
         window.onload = function() {
             const daySelect = document.getElementById('day');
             const monthSelect = document.getElementById('month');
@@ -215,7 +215,7 @@
             }
         };
 
-        // Register function
+       
         function register() {
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
@@ -244,13 +244,13 @@
             resetForm();
         }
 
-        // Reset form function
+        
         function resetForm() {
             document.getElementById('registrationForm').reset();
             document.getElementById('name').focus();
         }
 
-        // Mouse over and mouse out events for table rows
+        
         document.getElementById('membersTable').addEventListener('mouseover', function(e) {
             if (e.target.tagName === 'TD') {
                 e.target.parentElement.classList.add('highlight');
