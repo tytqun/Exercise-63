@@ -1,0 +1,267 @@
+<html>
+<head>
+    <title>Member Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: blue;
+            color: white;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"], .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="checkbox"], .form-group input[type="radio"] {
+            margin-right: 10px;
+        }
+        .form-group .color-options label {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 2px 5px;
+            color: black;
+        }
+        .form-group .color-options input[type="radio"] {
+            margin-right: 5px;
+        }
+        .form-group .color-options .color-blue {
+            background-color: blue;
+        }
+        .form-group .color-options .color-red {
+            background-color: red;
+        }
+        .form-group .color-options .color-yellow {
+            background-color: yellow;
+        }
+        .form-group .color-options .color-green {
+            background-color: green;
+        }
+        .form-group .color-options .color-violet {
+            background-color: violet;
+        }
+        .form-actions {
+            margin-top: 20px;
+        }
+        .form-actions button {
+            padding: 10px 20px;
+            margin-right: 10px;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+        .birthday-group, .gender-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Member Registration</h1>
+    <form id="registrationForm">
+        <div class="form-group">
+            <label for="name">Name(*)</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="birthday">Birthday(*)</label>
+            <div class="birthday-group">
+                <label for="day">Day:</label>
+                <select id="day" name="day"></select>
+                <label for="month">Month:</label>
+                <select id="month" name="month"></select>
+                <label for="year">Year:</label>
+                <select id="year" name="year"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Gender(*)</label>
+            <div class="gender-group">
+                <input type="radio" id="man" name="gender" value="Man">
+                <label for="man">Man</label>
+                <input type="radio" id="woman" name="gender" value="Woman">
+                <label for="woman">Woman</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email(*)</label>
+            <input type="text" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label>Your favorite:</label>
+            <input type="checkbox" id="shopping" name="favorite" value="Shopping">
+            <label for="shopping">Shopping</label><br>
+            <input type="checkbox" id="tourism" name="favorite" value="Tourism">
+            <label for="tourism">Tourism</label><br>
+            <input type="checkbox" id="chat" name="favorite" value="Chat">
+            <label for="chat">Chat</label><br>
+            <input type="checkbox" id="read" name="favorite" value="Read a book">
+            <label for="read">Read a book</label><br>
+            <input type="checkbox" id="music" name="favorite" value="Listening to music">
+            <label for="music">Listening to music</label>
+        </div>
+        <div class="form-group">
+            <label>Your favorite color:</label>
+            <div class="color-options">
+                <input type="radio" id="blue" name="color" value="Blue">
+                <label for="blue" class="color-blue">Blue</label><br>
+                <input type="radio" id="red" name="color" value="Red">
+                <label for="red" class="color-red">Red</label><br>
+                <input type="radio" id="yellow" name="color" value="Yellow">
+                <label for="yellow" class="color-yellow">Yellow</label><br>
+                <input type="radio" id="green" name="color" value="Green">
+                <label for="green" class="color-green">Green</label><br>
+                <input type="radio" id="violet" name="color" value="Violet">
+                <label for="violet" class="color-violet">Violet</label>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="button" onclick="register()">Sign up</button>
+            <button type="button" onclick="resetForm()">Reset</button>
+        </div>
+    </form>
+    <table id="membersTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Birthday</th>
+                <th>Hobbies</th>
+                <th>Colors</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John</td>
+                <td>john@gmail.com</td>
+                <td>Man</td>
+                <td>02/02/1990</td>
+                <td>Reading</td>
+                <td>Yellow</td>
+            </tr>
+            <tr>
+                <td>Peter</td>
+                <td>peter@gmail.com</td>
+                <td>Man</td>
+                <td>01/01/1992</td>
+                <td>chat, reading</td>
+                <td>Red</td>
+            </tr>
+            <tr>
+                <td>Lucy</td>
+                <td>lucy@gmail.com</td>
+                <td>Woman</td>
+                <td>01/02/2005</td>
+                <td>Listening, Chat</td>
+                <td>Violet</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // Populate day, month, year dropdowns
+        window.onload = function() {
+            const daySelect = document.getElementById('day');
+            const monthSelect = document.getElementById('month');
+            const yearSelect = document.getElementById('year');
+
+            for (let i = 1; i <= 31; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.text = i;
+                daySelect.appendChild(option);
+            }
+
+            for (let i = 1; i <= 12; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.text = i;
+                monthSelect.appendChild(option);
+            }
+
+            const currentYear = new Date().getFullYear();
+            for (let i = 1970; i <= currentYear; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.text = i;
+                yearSelect.appendChild(option);
+            }
+        };
+
+        // Register function
+        function register() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const gender = document.querySelector('input[name="gender"]:checked');
+            const day = document.getElementById('day').value;
+            const month = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+            const hobbies = Array.from(document.querySelectorAll('input[name="favorite"]:checked')).map(el => el.value).join(', ');
+            const color = document.querySelector('input[name="color"]:checked');
+
+            if (!name || !email || !gender || !day || !month || !year || !color) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            const table = document.getElementById('membersTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            newRow.insertCell(0).innerText = name;
+            newRow.insertCell(1).innerText = email;
+            newRow.insertCell(2).innerText = gender.value;
+            newRow.insertCell(3).innerText = `${day}/${month}/${year}`;
+            newRow.insertCell(4).innerText = hobbies;
+            newRow.insertCell(5).innerText = color.value;
+
+            resetForm();
+        }
+
+        // Reset form function
+        function resetForm() {
+            document.getElementById('registrationForm').reset();
+            document.getElementById('name').focus();
+        }
+
+        // Mouse over and mouse out events for table rows
+        document.getElementById('membersTable').addEventListener('mouseover', function(e) {
+            if (e.target.tagName === 'TD') {
+                e.target.parentElement.classList.add('highlight');
+            }
+        });
+
+        document.getElementById('membersTable').addEventListener('mouseout', function(e) {
+            if (e.target.tagName === 'TD') {
+                e.target.parentElement.classList.remove('highlight');
+            }
+        });
+    </script>
+</body>
+</html>
